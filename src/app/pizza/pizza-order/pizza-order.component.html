@@ -1,0 +1,28 @@
+<h3>Welcome to NgRx Pizza!</h3>
+<hr>
+
+<div *ngFor="let pizza of pizzas | async">
+
+  <h4>Pizza ID: {{ pizza.id }} </h4>
+
+  <img src="/assets/pizza.jpg" width="200px">
+
+  <p>Status: <span class="tag is-info">{{ pizza.status }}</span></p>
+
+  
+
+  <button class="button is-success" 
+          (click)="updatePizza(pizza.id, 'delivered')">
+    Update Status to Delivered
+  </button> 
+
+  <hr>
+
+</div>
+<form (ngSubmit)="addPizza()" class="col 6">
+  <input type="text" placeholder="Add Size" [(ngmodel)] ="pizza.size" name="size">
+  <input type="text" placeholder="Add Status" [(ngmodel)] ="pizza.status" name="status">
+<button class="button" type="submit">
+    Add Pizza
+  </button>
+  </form>
